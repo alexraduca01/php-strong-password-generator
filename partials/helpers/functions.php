@@ -15,7 +15,9 @@ function passGen(){
                 $newPass .= $newChar;
             }
         }
-        return $error = $newPass;
+        $_SESSION['password'] = $newPass;
+        header('Location: index.php');
+        die();
     }
     return false;
 }
