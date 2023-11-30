@@ -1,7 +1,7 @@
 <?php 
 
-
-
+include __DIR__ . '/partials/helpers/functions.php';
+$error = passGen();
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,22 @@
     </head>
     
     <body>
-        
+        <div class="bg-primary vh-100 w-100 d-flex justify-content-center flex-column">
+            <div class="pt-5">
+                <h1 class="text-center">Strong Password Generator</h1>
+                <h2 class="text-center text-white">Genera una password sicura</h2>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET">
+                    <label for="passLength" class="text-white">Lunghezza password:</label>
+                    <input type="number" name="passLength" id="passLength" min="3" max="20">
+                    <button type="submit" class="btn btn-success">Invio</button>
+                </form> 
+            </div>
+            <?php if($error){ ?>
+                <p class="text-warning fs-1 text-center mt-5">la tua password è: <?php echo $error ?></p>
+            <?php } ?>
+        </div>
     </body>
 
 </html>
